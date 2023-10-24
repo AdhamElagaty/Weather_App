@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/weather_status_widget.dart';
 
 class HomeView extends StatelessWidget {
