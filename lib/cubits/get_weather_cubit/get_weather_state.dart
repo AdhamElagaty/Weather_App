@@ -1,6 +1,6 @@
 class GetWeatherState {}
 
-class InatialState extends GetWeatherState {}
+class InitialState extends GetWeatherState {}
 
 class WeatherLoadedState extends GetWeatherState {}
 
