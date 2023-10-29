@@ -19,9 +19,9 @@ class WeatherStatusWidget extends StatelessWidget {
             weatherModel.name,
             style: const TextStyle(fontSize: 29, fontWeight: FontWeight.bold),
           ),
-          const Text(
-            "updated at 23:46",
-            style: TextStyle(fontSize: 22),
+          Text(
+            "updated at ${weatherModel.lastUpdateTime.hour} : ${weatherModel.lastUpdateTime.minute}",
+            style: const TextStyle(fontSize: 22),
           ),
           const SizedBox(
             height: 27,
