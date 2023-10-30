@@ -8,7 +8,7 @@ class WeatherModel {
   final double minTemp;
   final String? image;
   final String condtion;
-  final MaterialColor? color;
+  final MaterialColor color;
 
   WeatherModel({
     required this.name,

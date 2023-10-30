@@ -10,53 +10,61 @@ class WeatherStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     WeatherModel weatherModel =
         BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
-    return Padding(
-      padding: const EdgeInsets.all(14.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            weatherModel.name,
-            style: const TextStyle(fontSize: 29, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            "updated at ${weatherModel.lastUpdateTime.hour} : ${weatherModel.lastUpdateTime.minute}",
-            style: const TextStyle(fontSize: 22),
-          ),
-          const SizedBox(
-            height: 27,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.network("https:${weatherModel.image}", height: 100),
-              Text(
-                weatherModel.temp.round().toString(),
-                style:
-                    const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-              ),
-              Column(
-                children: [
-                  Text(
-                    "Maxtemp: ${weatherModel.maxTemp.round()}",
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Text(
-                    "Mintemp: ${weatherModel.minTemp.round()}",
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ],
-              )
-            ],
-          ),
-          Text(
-            weatherModel.condtion,
-            style: const TextStyle(
-              fontSize: 33,
-              fontWeight: FontWeight.bold,
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+        weatherModel.color,
+        weatherModel.color[300]!,
+        weatherModel.color[50]!,
+      ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+      child: Padding(
+        padding: const EdgeInsets.all(14.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              weatherModel.name,
+              style: const TextStyle(fontSize: 29, fontWeight: FontWeight.bold),
             ),
-          ),
-        ],
+            Text(
+              "updated at ${weatherModel.lastUpdateTime.hour} : ${weatherModel.lastUpdateTime.minute}",
+              style: const TextStyle(fontSize: 22),
+            ),
+            const SizedBox(
+              height: 27,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.network("https:${weatherModel.image}", height: 100),
+                Text(
+                  weatherModel.temp.round().toString(),
+                  style: const TextStyle(
+                      fontSize: 35, fontWeight: FontWeight.bold),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      "Maxtemp: ${weatherModel.maxTemp.round()}",
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Text(
+                      "Mintemp: ${weatherModel.minTemp.round()}",
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            Text(
+              weatherModel.condtion,
+              style: const TextStyle(
+                fontSize: 33,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
